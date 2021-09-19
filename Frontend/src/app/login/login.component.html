@@ -1,0 +1,23 @@
+<form class="form-signin" #userLogin="ngForm" (ngSubmit)="loginUser()"  >
+
+      <h2 class="h3 mb-3 font-weight-normal">Login</h2><br>
+      
+      <div class="form-group">
+      <input type="email" name="uname" [(ngModel)]="user.uname" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]).([a-z]{2,3})(.[a-z]{2,3})?$" class="form-control" placeholder="Username" required autofocus>
+      </div>
+      
+      
+      <div class="form-group">
+      <input type="password" name="password" #pswd="ngModel" [class.is-invalid]="pswd.invalid && pswd.touched" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$" [(ngModel)]="user.password" id="password" class="form-control" placeholder="Password" required>
+      </div><br>
+      
+      <div [class.d-none]="email.valid" class="alert alert-danger" role="alert">
+            Enter valid Email
+          </div>
+          <div [class.d-none]="pswd.valid" class="alert alert-danger" role="alert">
+            Enter valid password
+          </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="userLogin.form.invalid" >Sign in</button><br>
+      <a href="/signup">Don't have an account?</a>
+      
+</form>

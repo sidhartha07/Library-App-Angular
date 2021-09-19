@@ -1,0 +1,29 @@
+<form class="form-signin" #userSignup="ngForm" (ngSubmit)="signUpUser()" >
+      <h2 class="h3 mb-3 font-weight-normal">Sign Up</h2><br>
+
+    
+    <div class="form-group">
+      <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel" minlength="3" [class.is-invalid]="name.invalid && name.touched"  class="form-control" placeholder="Name" required >
+      </div>
+      
+      <div class="form-group">
+        <input type="email" name="email"  [(ngModel)]="user.username" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="^([A-Za-z0-9\.-]+)@([A-Za-z0-9\-]).([a-z]{2,3})(.[a-z]{2,3})?$" class="form-control" placeholder="Email address" required >
+        </div>
+
+        <div class="form-group">
+          <input type="password"  name="pswd" [(ngModel)]="user.password" #pswd="ngModel" [class.is-invalid]="pswd.invalid && pswd.touched" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$" class="form-control" placeholder="Password" required >
+          </div>
+        
+      <div [class.d-none]="name.valid " class="alert alert-danger" role="alert">
+        Name should be atleast 3 in length
+      </div>
+      <div [class.d-none]="email.valid" class="alert alert-danger" role="alert">
+        Enter valid Email
+      </div>
+      <div [class.d-none]="pswd.valid" class="alert alert-danger" role="alert">
+        Enter valid password
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="userSignup.form.invalid" >Sign Up</button><br>
+      <a href="/login">Already have an account?</a>
+    </form>

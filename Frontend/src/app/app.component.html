@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" routerLink="#">{{title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="books"  >Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="authors">Authors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="_auth.loggedIn()" routerLink="addbook">Add Book</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="_auth.loggedIn()" routerLink="addauthor">Add Author</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!_auth.loggedIn()" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="cursor:pointer" *ngIf="_auth.loggedIn()" (click)="logoutUser()" >Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="signup">Signup</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  
+
+  <router-outlet></router-outlet>           
+
+
+<footer class="footer">@2021 Library Application</footer>
